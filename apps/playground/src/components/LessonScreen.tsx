@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Navigate, useNavigate, useParams } from 'react-router'
-import { lessons } from '../lessons'
+import { lessons } from '@/lessons'
 import { LessonHeader } from './LessonHeader'
 import { Pager } from './Pager'
 import { Sidebar } from './Sidebar'

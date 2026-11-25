@@ -4,6 +4,11 @@ import { defineConfig, lazyPlugins } from 'vite-plus'
 
 export default defineConfig({
   plugins: lazyPlugins(() => [tailwindcss(), react()]),
+  resolve: {
+    alias: {
+      '@/': '/src/',
+    },
+  },
   server: {
     port: 5173,
     open: false,
