@@ -45,7 +45,11 @@ export const interaction: LessonDefinition = {
           }),
         )
 
-        cube.position.set((column - (gridSize - 1) / 2) * spacing, 0.5, (row - (gridSize - 1) / 2) * spacing)
+        cube.position.set(
+          (column - (gridSize - 1) / 2) * spacing,
+          0.5,
+          (row - (gridSize - 1) / 2) * spacing,
+        )
         cube.castShadow = true
         cube.receiveShadow = true
         cube.userData.selected = false

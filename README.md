@@ -15,13 +15,22 @@ pnpm dev
 
 Then open <http://localhost:5173>.
 
-Other commands:
+The repo runs on [Vite+](https://viteplus.dev/): one `vite-plus` dependency and
+one root `vite.config.ts` drive the dev server, build, formatter, linter, type
+checks, tests and commit hooks. Every root script just calls `vp`, so `pnpm <script>`
+and `vp <command>` are interchangeable.
 
 ```bash
-pnpm build      # production build of the playground
-pnpm preview    # preview the production build
-pnpm typecheck  # type-check every workspace package
+pnpm check      # vp check: format + lint + type-aware check of the workspace
+pnpm test       # vp test: Vitest across packages
+pnpm build      # vp build: production build of the playground
+pnpm preview    # vp preview: serve that build locally
+pnpm typecheck  # vp run -r typecheck: strict tsc in every package
 ```
+
+Formatting and lint rules live in the root `vite.config.ts` (`fmt` / `lint`), not
+in per-file config. `vp check --fix` repairs what it can, and
+`.vite-hooks/pre-commit` runs `vp check --fix` on staged files.
 
 ## What is in the box
 
@@ -35,6 +44,7 @@ threejs_journey/
 │           └── lessons/     # one file per lesson, numbered in reading order
 ├── packages/
 │   └── kit/                 # shared three.js helpers (renderer, loop, dispose, ...)
+├── vite.config.ts           # Vite+ toolchain: fmt/lint rules, staged checks, default app
 ├── pnpm-workspace.yaml      # workspace globs + shared dependency versions (catalog)
 └── tsconfig.base.json       # strict TypeScript config shared by every package
 ```
@@ -50,17 +60,17 @@ threejs_journey/
 
 ## The lesson path
 
-| # | Lesson | What it teaches |
-|---|--------|-----------------|
-| 01 | Hello, cube | Scene, camera, renderer, lights, shadows, animation loop |
-| 02 | Position, rotation, scale | Object hierarchy, groups, local vs world space |
-| 03 | Geometry is just data | BufferGeometry, procedural shapes, flat shading |
-| 04 | Materials & reflections | Material families, PBR, metalness/roughness, environment maps |
-| 05 | Lights & shadows | Directional/point/spot lights, helpers, shadow maps |
-| 06 | Textures & UVs | CanvasTexture, UVs, repeat/wrap/rotation, color space |
-| 07 | Picking with a ray | Raycaster, NDC coordinates, pointer events |
-| 08 | Post-processing & bloom | EffectComposer, RenderPass, UnrealBloomPass, HDR |
-| 09 | Sandbox | A blank scene to experiment in |
+| #   | Lesson                    | What it teaches                                               |
+| --- | ------------------------- | ------------------------------------------------------------- |
+| 01  | Hello, cube               | Scene, camera, renderer, lights, shadows, animation loop      |
+| 02  | Position, rotation, scale | Object hierarchy, groups, local vs world space                |
+| 03  | Geometry is just data     | BufferGeometry, procedural shapes, flat shading               |
+| 04  | Materials & reflections   | Material families, PBR, metalness/roughness, environment maps |
+| 05  | Lights & shadows          | Directional/point/spot lights, helpers, shadow maps           |
+| 06  | Textures & UVs            | CanvasTexture, UVs, repeat/wrap/rotation, color space         |
+| 07  | Picking with a ray        | Raycaster, NDC coordinates, pointer events                    |
+| 08  | Post-processing & bloom   | EffectComposer, RenderPass, UnrealBloomPass, HDR              |
+| 09  | Sandbox                   | A blank scene to experiment in                                |
 
 Every lesson has a `create()` that returns `{ scene, camera, update }`. The shell
 renders the active lesson, resizes its camera, and disposes the previous scene
@@ -81,8 +91,8 @@ export interface LessonInstance {
   camera: THREE.Camera
   update?: (delta: number, elapsed: number) => void
   resize?: (width: number, height: number) => void
-  render?: () => void       // replace renderer.render (e.g. EffectComposer)
-  dispose?: () => void      // controls, listeners, GUI
+  render?: () => void // replace renderer.render (e.g. EffectComposer)
+  dispose?: () => void // controls, listeners, GUI
 }
 ```
 
@@ -105,3 +115,6 @@ scene disposal (geometries, materials, textures, environment maps).
 - The kit is consumed as TypeScript source (`exports: "./src/index.ts"`). Vite
   compiles it directly, which keeps the dev loop fast and avoids a build step
   for an internal package.
+- The kit's helpers are tested in Node (`packages/kit/src/*.test.ts`) by
+  `vp test`. The lessons themselves need a real browser, so they are verified by
+  hand in the playground.

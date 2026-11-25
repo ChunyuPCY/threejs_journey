@@ -2,7 +2,16 @@ import * as THREE from 'three'
 import { createOrbitControls, createPerspectiveCamera } from '@threejs-journey/kit'
 import type { LessonDefinition } from '../types'
 
-const COLORS = ['#38bdf8', '#a78bfa', '#f472b6', '#fbbf24', '#34d399', '#22d3ee', '#fb7185', '#c084fc']
+const COLORS = [
+  '#38bdf8',
+  '#a78bfa',
+  '#f472b6',
+  '#fbbf24',
+  '#34d399',
+  '#22d3ee',
+  '#fb7185',
+  '#c084fc',
+]
 
 export const transforms: LessonDefinition = {
   id: 'transforms',
@@ -49,7 +58,11 @@ export const transforms: LessonDefinition = {
     // then applies its own local offset on top.
     const satellite = new THREE.Mesh(
       new THREE.SphereGeometry(0.22, 24, 16),
-      new THREE.MeshStandardMaterial({ color: '#fca5a5', emissive: '#7f1d1d', emissiveIntensity: 0.6 }),
+      new THREE.MeshStandardMaterial({
+        color: '#fca5a5',
+        emissive: '#7f1d1d',
+        emissiveIntensity: 0.6,
+      }),
     )
     satellite.position.set(0, 0.85, 0)
     cubes[0]?.add(satellite)

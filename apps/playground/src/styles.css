@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   color-scheme: dark;
@@ -31,8 +31,7 @@ body {
   -webkit-font-smoothing: antialiased;
   background:
     radial-gradient(900px 600px at 82% -10%, rgba(56, 189, 248, 0.09), transparent 60%),
-    radial-gradient(700px 500px at 0% 100%, rgba(167, 139, 250, 0.07), transparent 60%),
-    var(--bg);
+    radial-gradient(700px 500px at 0% 100%, rgba(167, 139, 250, 0.07), transparent 60%), var(--bg);
 }
 
 .shell {
@@ -106,7 +105,10 @@ body {
   text-decoration: none;
   border: 1px solid transparent;
   border-radius: 10px;
-  transition: background 140ms ease, color 140ms ease, border-color 140ms ease;
+  transition:
+    background 140ms ease,
+    color 140ms ease,
+    border-color 140ms ease;
 }
 
 .lesson-link:hover {
@@ -348,7 +350,10 @@ body {
   background: rgba(148, 163, 184, 0.06);
   border: 1px solid var(--line);
   border-radius: 8px;
-  transition: background 140ms ease, color 140ms ease, opacity 140ms ease;
+  transition:
+    background 140ms ease,
+    color 140ms ease,
+    opacity 140ms ease;
 }
 
 .pager-button:hover:not(:disabled) {

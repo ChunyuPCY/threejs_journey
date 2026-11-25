@@ -1,20 +1,20 @@
-import { useNavigate } from "react-router";
-import { lessons } from "../lessons";
-import { pad } from "../lib/format";
+import { useNavigate } from 'react-router'
+import { lessons } from '../lessons'
+import { pad } from '../lib/format'
 
 interface PagerProps {
-  index: number;
+  index: number
 }
 
 export function Pager({ index }: PagerProps) {
-  const navigate = useNavigate();
-  const total = lessons.length;
-  const atStart = index <= 0;
-  const atEnd = index >= total - 1;
+  const navigate = useNavigate()
+  const total = lessons.length
+  const atStart = index <= 0
+  const atEnd = index >= total - 1
 
   function goTo(target: number): void {
-    const lesson = lessons[target];
-    if (lesson) navigate(`/lesson/${lesson.id}`);
+    const lesson = lessons[target]
+    if (lesson) void navigate(`/lesson/${lesson.id}`)
   }
 
   return (
@@ -37,5 +37,5 @@ export function Pager({ index }: PagerProps) {
         Next →
       </button>
     </footer>
-  );
+  )
 }

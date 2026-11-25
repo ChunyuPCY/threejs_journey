@@ -1,8 +1,8 @@
-import { Link, NavLink } from "react-router";
-import { lessons } from "../lessons";
-import { pad } from "../lib/format";
+import { Link, NavLink } from 'react-router'
+import { lessons } from '../lessons'
+import { pad } from '../lib/format'
 
-const firstLesson = lessons[0]?.id ?? "";
+const firstLesson = lessons[0]?.id ?? ''
 
 export function Sidebar() {
   return (
@@ -19,15 +19,13 @@ export function Sidebar() {
         {lessons.map((lesson, index) => (
           <NavLink
             key={lesson.id}
-            className={({ isActive }) =>
-              `lesson-link${isActive ? " active" : ""}`
-            }
+            className={({ isActive }) => `lesson-link${isActive ? ' active' : ''}`}
             to={`/lesson/${lesson.id}`}
           >
             <span className="lesson-number">{pad(index + 1)}</span>
             <span className="lesson-link-text">
               <strong>{lesson.title}</strong>
-              <small>{lesson.concepts[0] ?? ""}</small>
+              <small>{lesson.concepts[0] ?? ''}</small>
             </span>
           </NavLink>
         ))}
@@ -42,5 +40,5 @@ export function Sidebar() {
         </span>
       </div>
     </aside>
-  );
+  )
 }

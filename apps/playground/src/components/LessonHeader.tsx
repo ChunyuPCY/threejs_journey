@@ -1,10 +1,10 @@
-import { lessons } from "../lessons";
-import { pad } from "../lib/format";
-import type { LessonDefinition } from "../types";
+import { lessons } from '../lessons'
+import { pad } from '../lib/format'
+import type { LessonDefinition } from '../types'
 
 interface LessonHeaderProps {
-  lesson: LessonDefinition;
-  index: number;
+  lesson: LessonDefinition
+  index: number
 }
 
 export function LessonHeader({ lesson, index }: LessonHeaderProps) {
@@ -23,5 +23,5 @@ export function LessonHeader({ lesson, index }: LessonHeaderProps) {
         ))}
       </ul>
     </header>
-  );
+  )
 }
