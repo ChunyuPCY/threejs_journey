@@ -1,6 +1,6 @@
 import { Link, NavLink } from 'react-router'
-import { lessons } from '../lessons'
-import { pad } from '../lib/format'
+import { lessons } from '@/lessons'
+import { pad } from '@/lib/format'
 
 const firstLesson = lessons[0]?.id ?? ''
 

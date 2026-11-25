@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router'
-import { lessons } from '../lessons'
-import { pad } from '../lib/format'
+import { lessons } from '@/lessons'
+import { pad } from '@/lib/format'
 
 interface PagerProps {
   index: number

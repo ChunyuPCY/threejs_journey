@@ -1,5 +1,5 @@
 import { Link } from 'react-router'
-import { lessons } from '../lessons'
+import { lessons } from '@/lessons'
 
 const firstLesson = lessons[0]?.id ?? ''
 

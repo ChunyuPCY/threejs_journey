@@ -1,6 +1,6 @@
-import { lessons } from '../lessons'
-import { pad } from '../lib/format'
-import type { LessonDefinition } from '../types'
+import { lessons } from '@/lessons'
+import { pad } from '@/lib/format'
+import type { LessonDefinition } from '@/types'
 
 interface LessonHeaderProps {
   lesson: LessonDefinition

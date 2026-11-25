@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import * as THREE from 'three'
 import { createLoop, createRenderer, disposeScene } from '@threejs-journey/kit'
-import type { LessonDefinition, LessonInstance } from '../types'
+import type { LessonDefinition, LessonInstance } from '@/types'
 
 interface StageProps {
   lesson: LessonDefinition
