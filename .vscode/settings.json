@@ -1,0 +1,23 @@
+{
+  "editor.formatOnSave": true,
+  // oxfmt 不支持局部格式化，只能整文件
+  "editor.formatOnSaveMode": "file",
+  // 将 Oxc 设为默认格式化工具
+  "editor.defaultFormatter": "oxc.oxc-vscode",
+  // 语言级设置优先级高于用户级的通用设置，必须逐语言覆盖，
+  // 否则会被全局用户设置里的 "[typescript]" 等 Prettier 配置抢走
+  "[javascript]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+  "[javascriptreact]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+  "[typescript]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+  "[typescriptreact]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+  "[json]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+  "[jsonc]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+  // 保存时自动格式化
+  "editor.codeActionsOnSave": {
+    "source.fixAll.oxc": "explicit"
+  },
+  // 禁止嵌套配置，统一使用根目录 Vite+ 配置
+  "oxc.disableNestedConfig": true,
+  "oxc.fmt.disableNestedConfig": true,
+  "oxc.fmt.configPath": "./vite.config.ts"
+}
